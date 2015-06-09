@@ -1,0 +1,5 @@
+$alarmMgr = Get-View AlarmManager
+ $entity = Get-Cluster $Cluster | Get-View
+ $VSANAlerts.Keys | Foreach {
+ $Name = $VSANAlerts.Get_Item($_)
+ $Value = $_
