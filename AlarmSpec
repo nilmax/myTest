@@ -1,0 +1,14 @@
+ $alarm = New-Object VMware.Vim.AlarmSpec
+ $alarm.Name = $Name
+ $alarm.Description = $Name
+ $alarm.Enabled = $TRUE
+ $expression = New-Object VMware.Vim.EventAlarmExpression
+ $expression.EventType = Vim.Event.EventEx
+ $expression.eventTypeId = $Value
+ $expression.objectType = "HostSystem"
+ $expression.status = "red"
+ $alarm.expression = New-Object VMware.Vim.OrAlarmExpression
+ $alarm.expression.expression += $expression
+ $alarm.setting = New-Object VMware.Vim.AlarmSetting
+ $alarm.setting.reportingFrequency = 0
+ $alarm.setting.toleranceRange = 0
